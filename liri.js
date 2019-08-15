@@ -1,4 +1,4 @@
-var omdb = require("./omdb");
-var spot = require("./spot");
-var bit = require("./BiT");
-var operator = process.argv[2]
+require("dotenv").config();
+var keys = require("./key.js");
+var spotify = new Spotify(keys.spotify);
+console.log(spotify)

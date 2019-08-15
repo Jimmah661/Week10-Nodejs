@@ -1,0 +1,23 @@
+{
+  "name": "Week10-Nodejs",
+  "version": "1.0.0",
+  "description": "## LIRI Bot",
+  "main": "BiT.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jimmah661/Week10-Nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jimmah661/Week10-Nodejs/issues"
+  },
+  "homepage": "https://github.com/Jimmah661/Week10-Nodejs#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
+}
