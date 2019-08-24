@@ -1,15 +1,12 @@
 require("dotenv").config();
 var keys = require("./key.js");
 var Spotify = require('node-spotify-api');
-
+var axios = require('axios')
 var spotify = new Spotify(keys.spotify);
 // External module calls
 var bandCall = require("./Packages/BandinTown.js");
-var omdbCall = require("./Packages/omdbCall")
 var operator = process.argv[2];
 var workIt = process.argv.slice(3).join(" ");
-
-// var spotify = new Spotify(keys.spotify);
 
 switch (operator) {
   // Connect to Bands in Town and output information based on the README file (Line 142)
@@ -37,7 +34,21 @@ switch (operator) {
 
   // Connect to OMDB and output information based on the README file (Line 178)
   case "movie-this":
-    omdbCall.call(workIt)
+    axios.get("http://www.omdbapi.com/?apikey=" + process.env.OMDB_Key + "&t=" + workIt)
+      .then(function (response) {
+        var data = response.data
+        var string = [
+          "Movie Title: " + data.Title,
+          "Release Year: " + data.Year,
+          'IMDB Rating: ' + data.Ratings[0].Value,
+          'Rotten Tomatoes Rating: ' + data.Ratings[1].Value,
+          'Production Country: ' + data.Country,
+          'Language(s): ' + data.Language,
+          'Plot: ' + data.Plot,
+          'Actors: ' + data.Actors
+        ].join("\n\n")
+        console.log(string)
+      })
     break;
 
   // Run the Liribot using commands stored in the random.txt file
