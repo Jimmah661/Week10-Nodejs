@@ -12,7 +12,6 @@ var workIt = process.argv.slice(3).join(" ");
 
 
 function movieSearch(movieTitle = "Toy Story") {
-  console.log(movieTitle)
   axios.get("http://www.omdbapi.com/?apikey=" + process.env.OMDB_Key + "&t=" + movieTitle)
     .then(function (response) {
       var data = response.data
@@ -50,7 +49,7 @@ function bandSearch(workIt = "Electric Six") {
   axios.get("https://rest.bandsintown.com/artists/" + workIt + "/events?app_id=codingbootcamp&date=upcoming")
     .then(function (response) {
       var data = response.data
-      console.log(data[0])
+
       for (i = 0; i < data.length; i++) {
         var gig = {};
         gig.venueName = data[i].venue.name;
