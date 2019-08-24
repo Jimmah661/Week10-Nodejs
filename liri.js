@@ -2,6 +2,7 @@ require("dotenv").config();
 var keys = require("./key.js");
 var Spotify = require('node-spotify-api');
 var axios = require('axios')
+var fs = require('fs')
 var spotify = new Spotify(keys.spotify);
 // External module calls
 var bandCall = require("./Packages/BandinTown.js");
@@ -57,5 +58,9 @@ switch (operator) {
 
   // Run the Liribot using commands stored in the random.txt file
   case "do-what-it-says":
+    fs.readFile('random.txt', function (err, data) {
+      if (err) throw err;
+      console.log(data)
+    })
     break;
 }
