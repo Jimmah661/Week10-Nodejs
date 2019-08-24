@@ -34,7 +34,11 @@ switch (operator) {
 
   // Connect to OMDB and output information based on the README file (Line 178)
   case "movie-this":
-    axios.get("http://www.omdbapi.com/?apikey=" + process.env.OMDB_Key + "&t=" + workIt)
+    var movieTitle = "Mr. Nobody";
+    if (workIt) {
+      movieTitle = workIt;
+    }
+    axios.get("http://www.omdbapi.com/?apikey=" + process.env.OMDB_Key + "&t=" + movieTitle)
       .then(function (response) {
         var data = response.data
         var string = [
